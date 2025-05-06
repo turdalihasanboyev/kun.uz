@@ -14,7 +14,7 @@ class Category(BaseModel):
     title = models.CharField(max_length=225, unique=True, db_index=True)
     slug = models.SlugField(blank=True, db_index=True)
     parent = models.ForeignKey(
-        'self', on_delete=models.CASCADE, blank=True, null=True, related_name='children'
+        'self', on_delete=models.CASCADE, blank=True, null=True, related_name='children', db_index=True, default=None, limit_choices_to={"parent__isnull": True}
     )
     description = RichTextField(blank=True, null=True)
 
@@ -25,7 +25,7 @@ class Category(BaseModel):
 
     def save(self, *args, **kwargs):
         base_slug = slugify(self.title)
-        uuid_slug = str(uuid4())[:8]
+        uuid_slug = str(uuid4().hex[:8])
         date_slug = datetime.today().strftime('%d-%m-%Y-%H-%M-%S')
         self.slug = f'{base_slug}-{uuid_slug}-{date_slug}'
         super(Category, self).save(*args, **kwargs)

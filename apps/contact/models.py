@@ -7,9 +7,9 @@ from apps.common.models import BaseModel
 
 class Contact(BaseModel):
     name = models.CharField(max_length=225, db_index=True)
-    email = models.EmailField(max_length=225, db_index=True, unique=True)
-    phone_number = models.CharField(max_length=225, db_index=True, unique=True)
-    subject = models.CharField(max_length=225, db_index=True, unique=True)
+    email = models.EmailField(max_length=225, db_index=True)
+    phone_number = models.CharField(max_length=225, db_index=True)
+    subject = models.CharField(max_length=225, db_index=True)
     message = RichTextField(null=True, blank=True)
     file = models.FileField(upload_to='contact_files/', null=True, blank=True)
 
