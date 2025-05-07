@@ -28,15 +28,19 @@ class Article(BaseModel):
     category = models.ForeignKey(
         "category.Category", on_delete=models.CASCADE, related_name="article_category"
     )
-    tags = models.ManyToManyField("category.Tag", related_name="article_tags", blank=True)
+    tags = models.ManyToManyField(
+        "category.Tag", related_name="article_tags", blank=True)
     content = RichTextField(null=True, blank=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_author")
-    painter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_painter")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="article_author")
+    painter = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="article_painter")
     image = models.ImageField(
         upload_to="article_images", default='img/default.png')
     video = models.FileField(upload_to="article_videos", blank=True, null=True)
     duration = models.DurationField(null=True, blank=True)
-    read_time = models.DurationField(null=True, blank=True) # duration field yangi
+    read_time = models.DurationField(
+        null=True, blank=True)  # duration field yangi
     published_at = models.DateTimeField(auto_now_add=True)
     views = models.BigIntegerField(default=0)
 
@@ -52,7 +56,8 @@ class Article(BaseModel):
         base_slug = slugify(self.name)
         uuid_slug = uuid4()
         # date_slug = datetime.today().strftime('%d-%m-%Y-%H-%M-%S') # yuqori darajada unikal va lokal timezone ni qo'llamaydi
-        date_slug = datetime.now().strftime('%d-%m-%Y') # pastroq darajada unikal va lokal timezone ni qo'llaydi
+        # pastroq darajada unikal va lokal timezone ni qo'llaydi
+        date_slug = datetime.now().strftime('%d-%m-%Y')
         self.slug = f"{base_slug}-{uuid_slug}-{date_slug}"
         super().save(*args, **kwargs)
 

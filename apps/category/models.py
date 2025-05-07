@@ -42,7 +42,7 @@ class Tag(BaseModel):
     """
     Tag model
     """
-    
+
     name = models.CharField(max_length=225, unique=True, db_index=True)
     slug = models.SlugField(blank=True, db_index=True)
 
