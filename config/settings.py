@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'apps.article',
 ]
 
-{
+DJANGO_QUERY_COUNTER = {
     'DQC_SLOWEST_COUNT': 5,
     'DQC_TABULATE_FMT': 'pretty',
     'DQC_SLOW_THRESHOLD': 1,
