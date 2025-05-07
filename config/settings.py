@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'apps.article',
 ]
 
-DJANGO_QUERY_COUNTER = {
+{
     'DQC_SLOWEST_COUNT': 5,
     'DQC_TABULATE_FMT': 'pretty',
     'DQC_SLOW_THRESHOLD': 1,
@@ -68,15 +68,12 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-
-    #
-    'query_counter.middleware.QueryCountMiddleware',
-    #
-
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'query_counter.middleware.DjangoQueryCounterMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
