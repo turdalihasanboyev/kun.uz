@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'query_counter',
 
-    'apps.common',
     'apps.contact',
     'apps.category',
     'apps.article',
@@ -157,8 +156,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# CKeditor config
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
