@@ -11,3 +11,5 @@ https://telegra.ph/kunuz-05-05
 https://telegra.ph/kunuz-05-05-2
 
 ![App structure plan](<Screenshot from 2025-05-05 21-16-54.png>)
+
+* Loyiha django da qurib bolindi endi navbat drf ga
