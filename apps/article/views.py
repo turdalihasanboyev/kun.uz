@@ -12,21 +12,15 @@ class HomePageView(View):
     def get(self, request, *args, **kwargs):
         q = request.GET.get('q')
 
-        categories = Category.objects.all()
-        tags = Tag.objects.all()
         articles = Article.objects.all()
 
         if q:
             articles = articles.filter(name__icontains=q)
 
-        context = {
-            'categories': categories,
-            'tags': tags,
-            'articles': articles[:6],
-        }
+        context = {'articles': articles[:6]}
 
         return render(request, self.template_name, context)
-    
+
 
 class ArticleDetailView(View):
     template_name = 'article_detail.html'
@@ -44,7 +38,7 @@ class ArticleDetailView(View):
         }
 
         return render(request, self.template_name, context)
-    
+
 
 class AboutPageView(View):
     def get(self, request):
