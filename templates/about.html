@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Biz haqimizda - Kun.uz{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <h1 class="mb-4 text-center">Biz haqimizda</h1>
+            <p class="lead text-center mb-5">
+                Kun.uz — O'zbekistondagi dolzarb yangiliklar, tahlillar va maqolalar e'lon qilinadigan yirik axborot
+                portallaridan biri.
+            </p>
+
+            <h4 class="mb-3">Bizning maqsadimiz</h4>
+            <p>
+                Asosiy maqsadimiz - o'z vaqtida, ishonchli va xolis axborotni taqdim etish, jamiyatda axborot
+                savodxonligini oshirish va muhim voqealarni yoritishda halollik tamoyiliga rioya qilishdir.
+            </p>
+
+            <h4 class="mt-5 mb-3">Tariximiz</h4>
+            <p>
+                Kun.uz portali 2012-yilda ishga tushirilgan. Dastlab kichik jamoa tomonidan yuritilgan bo'lsa-da,
+                bugungi kunda professional jurnalistlar, muharrirlar va texnik xodimlardan iborat katta jamoaga aylandi.
+            </p>
+
+            <h4 class="mt-5 mb-3">Biz bilan bog'lanish</h4>
+            <ul>
+                <li><strong>Manzil:</strong> Toshkent shahri, Chilonzor tumani, Mustaqillik shoh ko'chasi, 12-uy</li>
+                <li><strong>Telefon:</strong> +998 71 200-00-00</li>
+                <li><strong>Email:</strong> info@kun.uz</li>
+            </ul>
+
+            <div class="mt-5">
+                <p class="text-muted">© {{ now.year }} Kun.uz - Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

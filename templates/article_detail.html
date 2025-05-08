@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ article.name }} - Maqola{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-3">{{ article.name }}</h1>
+
+            <div class="mb-2 text-muted">
+                <span>Kategoriya: <a href="#">{{ article.category.name }}</a></span> |
+                <span>Muallif: {{ article.author.get_full_name }}</span> |
+                <span>O'qilgan: {{ article.views }} marta</span>
+            </div>
+
+            {% if article.image %}
+            <img src="{{ article.image.url }}" class="img-fluid rounded mb-4" alt="{{ article.name }}">
+            {% endif %}
+
+            {% if article.video %}
+            <video controls class="w-100 rounded mb-4">
+                <source src="{{ article.video.url }}" type="video/mp4">
+                Brauzeringiz video formatini qo‘llab-quvvatlamaydi.
+            </video>
+            {% endif %}
+
+            <div class="article-content mb-4">
+                {{ article.content|safe }}
+            </div>
+
+            {% if article.tags.all %}
+            <div class="mb-3">
+                <strong>Teglar:</strong>
+                {% for tag in article.tags.all %}
+                <a href="#" class="badge bg-secondary text-decoration-none">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-4">
+            <h5 class="mb-3">O'xshash maqolalar</h5>
+            <div class="list-group">
+                {% for similar in article_category %}
+                <a href="{{ similar.get_absolute_url }}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">{{ similar.name|truncatewords:8 }}</h6>
+                    </div>
+                </a>
+                {% empty %}
+                <p>O'xshash maqola topilmadi.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
