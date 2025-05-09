@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Aloqa
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="text-center mb-4">Biz bilan bog'laning</h1>
+
+    {% if messages %}
+    <div class="mb-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Yopish"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label for="name" class="form-label">Ismingiz</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Ismingizni kiriting" required>
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email manzilingiz</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Emailni kiriting" required>
+        </div>
+        <div class="col-md-6">
+            <label for="phone_number" class="form-label">Telefon raqam</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="+998..."
+                required>
+        </div>
+        <div class="col-md-6">
+            <label for="file" class="form-label">Fayl yuklash (ixtiyoriy)</label>
+            <input type="file" class="form-control" id="file" name="file" required>
+        </div>
+        <div class="col-12">
+            <label for="message" class="form-label">Xabaringiz</label>
+            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Xabaringizni kiriting..."
+                required></textarea>
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary px-5">Yuborish</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

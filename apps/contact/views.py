@@ -1,3 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.views import View
 
-# Create your views here.
+from .models import Contact
+
+
+class ContactView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'contact.html')
+    
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        message = request.POST.get('message')
+        file = request.FILES.get('file')
+
+        if name and email and phone_number and message and file:
+            contact = Contact()
+            contact.name = name
+            contact.email = email
+            contact.phone_number = phone_number
+            contact.message = message
+            contact.file = file
+            contact.save()
+            messages.success(request, 'Sizning xabaringiz qabul qilindi!')
+            return redirect('contact')
+        else:
+            messages.error(request, "Barcha ma'lumotlarni to'ldiring")
+            return redirect('contact')
