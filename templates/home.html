@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
 {% block title %}
 Bosh sahifa
 {% endblock %}
 
 {% block content %}
+
 <div class="container py-4">
     <h1 class="mb-4 text-center">So'nggi maqolalar</h1>
 
@@ -42,7 +41,7 @@ Bosh sahifa
             <ul class="list-group">
                 {% for cat in categories %}
                 <li class="list-group-item">
-                <a href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
+                    <a href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
                 </li>
                 {% empty %}
                 <li class="list-group-item">Kategoriya yo'q</li>
