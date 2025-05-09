@@ -33,6 +33,7 @@ urlpatterns = [
     path('unauthorized/', custom_401_view, name='unauthorized'),
 
     path('', include('apps.contact.urls')),
+    path('', include('auth.urls')),
     path('', include('apps.category.urls')),
     path('', include('apps.article.urls')),
 

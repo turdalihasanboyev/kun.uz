@@ -53,6 +53,13 @@ INSTALLED_APPS = [
     'apps.article',
 ]
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = 'home'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 3600
+AUTH_USER_MODEL = 'auth.User'
+
 {
     'DQC_SLOWEST_COUNT': 5,
     'DQC_TABULATE_FMT': 'pretty',

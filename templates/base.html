@@ -58,6 +58,21 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Biz bilan aloqa</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Profilim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Tizimdan chiqish</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Tizimga kirish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Ro'yhatdan o'tish</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex" method="get" action="/">
                     <input class="form-control me-2" type="search" name="q" placeholder="Qidiruv..."
