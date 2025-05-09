@@ -6,10 +6,10 @@ from .models import Contact
 
 
 class ContactView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         return render(request, 'contact.html')
-    
-    def post(self, request, *args, **kwargs):
+
+    def post(self, request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone_number = request.POST.get('phone_number')

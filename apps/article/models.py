@@ -40,7 +40,7 @@ class Article(BaseModel):
         verbose_name = 'Maqola'
         verbose_name_plural = 'Maqolalar'
 
-    def get_absolute_url(self, *args, **kwargs):
+    def get_absolute_url(self):
         return reverse('article-detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):

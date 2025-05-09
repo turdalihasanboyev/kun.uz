@@ -1,11 +1,7 @@
-from apps.category.models import Category, Tag
+from apps.category.models import Category
 
 
 def global_context(request):
     categories = Category.objects.all()
-
-    context = {
-        'categories': categories,
-    }
-
+    context = {'categories': categories}
     return context
