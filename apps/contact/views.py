@@ -13,6 +13,7 @@ class ContactView(View):
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone_number = request.POST.get('phone_number')
+        subject = request.POST.get('subject')
         message = request.POST.get('message')
         file = request.FILES.get('file')
 
@@ -21,6 +22,7 @@ class ContactView(View):
             contact.name = name
             contact.email = email
             contact.phone_number = phone_number
+            contact.subject = subject
             contact.message = message
             contact.file = file
             contact.save()
