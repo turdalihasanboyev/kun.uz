@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: kunuz_db_container
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: kunuz
+      POSTGRES_USER: kunuz
+      POSTGRES_PASSWORD: kunuz
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  web:
+    build: .
+    image: kunuz_web_image
+    container_name: kunuz_web_container
+    ports:
+      - "2007:2007"
+    depends_on:
+      - db
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=False
+      - DJANGO_ALLOWED_HOSTS=*
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=turdalihasanboyev144@gmail.com
+      - DJANGO_SUPERUSER_PASSWORD=123
+      - DATABASE_NAME=kunuz
+      - DATABASE_USER=kunuz
+      - DATABASE_PASSWORD=kunuz
+      - DATABASE_HOST=db
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py createsuperuser --noinput || true &&
+             python manage.py runserver 0.0.0.0:2007"
+
+volumes:
+  postgres_data:
